@@ -1,11 +1,14 @@
 .preview
     height: 480px
+    overflow: hidden
+    visibility: hidden
     &__bg
         width: 100%
         height: 100%
         object-fit: cover
 
 .promo
+    position: relative
     margin-top: -90px
     @include sm
         margin-top: -68px
@@ -13,10 +16,13 @@
         margin-top: -40px
     @include mini
         margin-top: -34px
+    &__title
+        visibility: hidden
     &__wrap
         display: flex
         align-items: stretch
         justify-content: flex-end
+        visibility: hidden
         @include sm
             flex-direction: column
             max-width: 444px
