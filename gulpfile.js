@@ -1,4 +1,5 @@
 const gulp        = require('gulp');
+const deploy        = require('gulp-gh-pages');
 const browserSync = require('browser-sync');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
@@ -11,6 +12,11 @@ const ttf2woff = require('gulp-ttf2woff');
 const ttf2woff2 = require('gulp-ttf2woff2');
 const webp = require('gulp-webp');
 // const avif = require('gulp-avif');
+
+gulp.task('deploy', function () {
+    return gulp.src("./dist/**/*")
+      .pipe(deploy())
+  });
 
 const server = function() {
     browserSync({
