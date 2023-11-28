@@ -76,14 +76,17 @@ function anim() {
 			"-=0.7"
 		)
 		.from(
-			".promo__wrap",
+			".promo__img",
 			{
-				duration: 1,
 				yPercent: 50,
 				autoAlpha: 0,
 			},
 			"<"
 		);
+
+	gsap.set("promo__title", {
+		opacity: 1,
+	});
 
 	gsap.to(".preview__bg", {
 		yPercent: -10,
@@ -92,7 +95,35 @@ function anim() {
 			start: "top 150px",
 			end: "bottom top",
 			scrub: 1,
-			markers: true,
 		},
 	});
+
+	const tlTitles = gsap.timeline({
+		scrollTrigger: {
+			trigger: ".promo__info",
+			start: "top 80%",
+			end: "top 40%",
+			scrub: true,
+		},
+	});
+	tlTitles
+		.to(".promo__title", {
+			opacity: 0.1,
+		})
+		.from(
+			".promo__info",
+			{
+				opacity: 0.1,
+			},
+			"<"
+		);
+
+	// const tlPromo = gsap.timeline({
+	// 	scrollTrigger: {
+	// 		trigger: ".promo__wrap",
+	// 		start: "top 5%",
+	// 		end: "bottom 40%",
+	// 		scrub: true,
+	// 	},
+	// });
 }
