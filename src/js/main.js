@@ -219,4 +219,25 @@ function anim() {
 			},
 		});
 	});
+
+	const tlCountry = gsap.timeline({
+		scrollTrigger: {
+			trigger: ".country__right",
+			start: "top 40%",
+			end: "top 5%",
+			scrub: true,
+		},
+	});
+
+	tlCountry
+		.to(".country__title", {
+			opacity: 0.1,
+		})
+		.from(
+			".country__right",
+			{
+				opacity: 0.1,
+			},
+			"<"
+		);
 }
