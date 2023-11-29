@@ -118,12 +118,24 @@ function anim() {
 			"<"
 		);
 
-	// const tlPromo = gsap.timeline({
-	// 	scrollTrigger: {
-	// 		trigger: ".promo__wrap",
-	// 		start: "top 5%",
-	// 		end: "bottom 40%",
-	// 		scrub: true,
-	// 	},
-	// });
+	const tlPromo = gsap.timeline({
+		scrollTrigger: {
+			trigger: ".promo__wrap",
+			start: "top top",
+			end: "bottom+=100%",
+			scrub: true,
+			pin: true,
+		},
+	});
+	tlPromo
+		.to(".promo__left-inner", {
+			y: 0,
+		})
+		.to(
+			".promo__img",
+			{
+				y: "-100vh",
+			},
+			"<"
+		);
 }
