@@ -170,7 +170,7 @@ function anim() {
 		scrollTrigger: {
 			trigger: ".tradition",
 			start: "top 50%",
-			end: "bottom 50%",
+			end: "bottom bottom",
 			duration: 0.7,
 			toggleActions: "play reverse play reverse",
 		},
@@ -240,4 +240,88 @@ function anim() {
 			},
 			"<"
 		);
+
+	gsap.set(".story", {
+		background: "#100F0D",
+	});
+	gsap.set(".story__title", {
+		color: "#EDEAE2",
+	});
+	const tlStory = gsap.timeline({
+		scrollTrigger: {
+			trigger: ".story",
+			start: "top 50%",
+			end: "bottom 50%",
+			duration: 0.7,
+			toggleActions: "play reverse play reverse",
+		},
+	});
+	tlStory
+		.to("body", {
+			background: "#EDEAE2",
+		})
+		.to(
+			".country__right",
+			{
+				color: "#BB9930",
+			},
+			"<"
+		)
+		.to(
+			".story",
+			{
+				background: "#EDEAE2",
+			},
+			"<"
+		)
+		.to(
+			".story__title",
+			{
+				color: "#BB9930",
+			},
+			"<"
+		);
+
+	const sections = gsap.utils.toArray(".slider__slide");
+	gsap.set(".slider__text", {
+		opacity: 0.1,
+	});
+
+	const slider = gsap.to(".slider__wrapper", {
+		xPercent: -100 * (sections.length - 1),
+		ease: "none", // без этого containerAnimation не сработает
+		scrollTrigger: {
+			trigger: ".story__slider",
+			start: "top top",
+			end: `+=${sections.length * 1000}`,
+			// end: () => {return '+=' + document.querySelector('.slider__wrapper').offsetWidth},
+			pin: true,
+			scrub: true,
+		},
+	});
+
+	document.querySelectorAll(".slider__text").forEach((item, index) => {
+		if (index !== 0) {
+			gsap.to(item, {
+				opacity: 1,
+				scrollTrigger: {
+					trigger: item,
+					start: "left 60%",
+					end: "+=500px",
+					scrub: 1,
+					containerAnimation: slider,
+				},
+			});
+		} else {
+			gsap.to(item, {
+				opacity: 1,
+				duration: 0.5,
+				scrollTrigger: {
+					trigger: ".story__slider",
+					start: "top top",
+					toggleActions: "play reverse play reverse",
+				},
+			});
+		}
+	});
 }
