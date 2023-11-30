@@ -288,7 +288,7 @@ function anim() {
 			xPercent: -100 * (sections.length - 1),
 			ease: "none", // без этого containerAnimation не сработает
 			scrollTrigger: {
-				trigger: ".story__slider",
+				trigger: ".slider",
 				start: "top top",
 				end: `+=${sections.length * 1000}`,
 				// end: () => {return '+=' + document.querySelector('.slider__wrapper').offsetWidth},
@@ -314,7 +314,7 @@ function anim() {
 					opacity: 1,
 					duration: 0.5,
 					scrollTrigger: {
-						trigger: ".story__slider",
+						trigger: ".slider",
 						start: "top top",
 						toggleActions: "play reverse play reverse",
 					},
