@@ -36,7 +36,8 @@
         position: relative
         margin-right: 30px
         flex: 1 1 auto
-        // transform: translateY(100%)
+        @include sm
+            display: none
     &__left-inner
         position: absolute
         width: 100%
@@ -56,12 +57,14 @@
             margin-bottom: 70px
     &__img
         flex: 0 1 482px
+        visibility: hidden
         img
             height: 100%
             object-fit: cover
         @include sm
             height: 576px
             flex: 0 1 auto
+            visibility: inherit
             img
                 width: 100%
         @include xxs
@@ -209,12 +212,12 @@
         @media(min-width: 1920px)
             width: 80%
             height: 640px
-            position: absolute
-            width: 100%
-            height: 540px
-            right: 0
-            bottom: -120px
-            transform: translateY(100%)
+        position: absolute
+        width: 100%
+        height: 540px
+        right: 0
+        bottom: -120px
+        transform: translateY(100%)
         img
             width: 100%
             height: 100%
@@ -225,9 +228,9 @@
             display: none
 
 .country
+    padding-top: 510px
     @media(min-width: 1920px)
         padding-top: 610px
-        padding-top: 510px
     @include sm
         padding-top: 200px
     &__title
@@ -282,10 +285,14 @@
     &__wrapper
         width: 100vw
         height: 100vh
+        @include sm
+            height: auto
         display: flex
     &__slide
         flex: 0 0 100%
         height: 100%
+        @include sm
+            height: auto
         position: relative
     &__text
         position: absolute
@@ -295,9 +302,15 @@
         transform: translate(-50%, -50%)
         font-size: 70px
         font-family: $arina
+        @include sm
+            font-size: 1px
+            display: none
+
     &__img
         width: 100%
         height: 100%
+        @include sm
+            height: auto
         img
             width: 100%
             height: 100%
